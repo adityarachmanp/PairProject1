@@ -1,4 +1,5 @@
-const { Product } = require('../models')
+const { Product, Customer } = require('../models')
+const bcrypt = require('bcryptjs')
 
 class Controller {
   static home(req, res) {
@@ -92,6 +93,55 @@ class Controller {
       .catch(err => {
         res.send(err)
       })
+  }
+  static registerFormCustomer(req, res) {
+    res.render('customer-register')
+  }
+  static registerCustomer(req, res) {
+    const obj = {
+      "name":	req.body.name,
+      "password": req.body.password,
+    }
+    Customer.create(obj)
+    .then(data =>{
+      res.redirect('/')
+    }).catch(err=>{
+      res.send(err)
+    })
+  }
+  static loginForm(req, res) {
+    res.render('login')
+  }
+  static login(req, res) {
+    let { name, password} = req.body
+    Customer.findOne({
+      where: {
+        name: name
+      }
+    })
+     .then(data => {
+       
+       if (data.name) {
+         let isValidPass = bcrypt.compareSync(password, data.password)
+
+         if (isValidPass) {
+
+           req.session.userId = +data.id
+
+           return res.redirect('/')
+         } else {
+           return res.redirect('/login?error=invalid password')
+         }
+       }
+     })
+     .catch(err => {
+        res.send(err)
+     })
+  }
+  static logout(req, res) {
+    delete req.session.userId
+
+    res.redirect('/')
   }
 }
 

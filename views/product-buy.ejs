@@ -3,12 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
 	<title>Toko jaya abadi</title>
 </head>
 <body>
   <a href="/products/add">Add</a>
-	<h1>Products</h1>
+	<h1>Buy</h1>
 	<table border="1">
 		<thead>
 			<tr>
@@ -27,16 +26,31 @@
 					<td><%= el.qty %></td>
           <td><%= el.price %></td>
           <td>
-            <a href="/products/update/<%= el.id %>">Update</a> |
-            <a href="/products/delete/<%= el.id %>">Delete</a> |
             <a href="/products/buy/<%= el.id %>">Buy</a>
           </td>
 				</tr>
 		<%	}) %>
 		</tbody>
-	</table>	
-	<script>
+  </table>
 
-	</script>
+  <table>
+    <thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Qty</th>
+				<th>Price</th>
+			</tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= el.id %></td>
+        <td><%= el.name %></td>
+        <td><%= el.qty %></td>
+        <td><%= el.price %></td>
+      </tr>
+    </tbody>
+  </table>
+  
 </body>
 </html>
