@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js "
+    "start": "node app.js "
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/adityarachmanp/PairProject1#readme",
   "dependencies": {
+    "datatables.net": "^1.10.22",
+    "datatables.net-dt": "^1.10.22",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "jquery": "^3.5.1",
     "pg": "^8.4.1",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"

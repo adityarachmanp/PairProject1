@@ -3,12 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Toko jaya abadi</title>
+  <title>Toko jaya abadi</title>
+  <!-- <script type="text/javascript" src="jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" src="datatabel/media/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="datatabel/media/css/jquery.dataTables.min.css"> -->
+<!-- 
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script> -->
 </head>
 <body>
   <a href="/products/add">Add</a>
-	<h1>Categories</h1>
-	<table border="1">
+	<h1>Product</h1>
+	<table class = "display" id="tabel_id">
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -32,6 +39,11 @@
 				</tr>
 		<%	}) %>
 		</tbody>
-	</table>
+  </table>
+  <!-- <script type="text/javascript">
+  $(document).ready(function(){
+    $("#tabel1").dataTable();
+  })
+</script> -->
 </body>
 </html>
