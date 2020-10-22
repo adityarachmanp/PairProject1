@@ -17,6 +17,7 @@ routes.use(function(req, res, next) {
   }
 })
 routes.get('/logout', Controller.logout)
+routes.get('/transactions', Controller.transaction)
 routes.get('/products', Controller.productView)
 routes.get('/products/add', Controller.productAddForm)
 routes.post('/products/add', Controller.productAdd)

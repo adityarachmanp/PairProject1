@@ -1,4 +1,4 @@
-const { Product, Customer } = require('../models')
+const { Product, Customer, CustomerProduct } = require('../models')
 const bcrypt = require('bcryptjs')
 
 class Controller {
@@ -88,6 +88,13 @@ class Controller {
         })
       })
       .then(data => {
+        return CustomerProduct.create({
+          customer_id: req.session.userId,
+          product_id: id,
+          amount: 1
+        })
+      })
+      .then(data => {
         res.redirect('/products')
       })
       .catch(err => {
@@ -142,6 +149,17 @@ class Controller {
     delete req.session.userId
 
     res.redirect('/')
+  }
+  static transaction(req, res) {
+    CustomerProduct.findAll({
+      include: [Product, Customer]
+    })
+      .then(data => {
+        res.render('transaction',{ data})
+      })
+      .catch(err => {
+        res.send(err)
+     })
   }
 }
 
