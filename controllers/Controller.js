@@ -2,7 +2,7 @@ const { Product } = require('../models')
 
 class Controller {
   static home(req, res) {
-    res.send('home')
+    res.render('home')
   }
   static productView(req, res) {
     Product.findAll()
@@ -75,6 +75,7 @@ class Controller {
        res.send(err)
     })
   }
+  
 }
 
 module.exports = Controller
