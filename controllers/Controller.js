@@ -63,8 +63,6 @@ class Controller {
        res.send(err)
     })
   }
-  
-
   static productDelete(req, res) {
     let id = +req.params.id
     Product.destroy({where:{id:id}})
@@ -75,7 +73,26 @@ class Controller {
        res.send(err)
     })
   }
-  
+  static buy(req, res) {
+    let id = +req.params.id
+    Product.findByPk(id)
+      .then(data => {
+        let {qty} = data
+        return Product.update({
+          qty: qty - 1
+        },{
+          where:{
+            id: id
+          }
+        })
+      })
+      .then(data => {
+        res.redirect('/products')
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  }
 }
 
 module.exports = Controller
